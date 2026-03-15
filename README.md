@@ -214,7 +214,7 @@ docker run --env-file .env rossmann-etl
 ```
 
 # 5. Update CSV path in etl_pipeline.py
-#    - Change data_path to your CSV location
+- Change data_path to your CSV location
 
 # 6. Run the ETL pipeline
 python etl_pipeline.py
