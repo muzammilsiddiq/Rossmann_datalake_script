@@ -113,6 +113,106 @@ pip install pandas numpy supabase python-dotenv
 echo "SUPABASE_URL=your_url_here" > .env
 echo "SUPABASE_KEY=your_key_here" >> .env
 
+## 🔧 Installation
+
+### 1. Clone or Download the Repository
+```bash
+git clone https://github.com/yourusername/rossmann-star-schema.git
+cd rossmann-star-schema
+```
+
+### 2. Create and Activate Virtual Environment (Optional but Recommended)
+
+**On macOS/Linux:**
+```bash
+python -m venv venv
+source venv/bin/activate
+```
+
+**On Windows:**
+```bash
+python -m venv venv
+venv\Scripts\activate
+```
+
+### 3. Install Dependencies
+
+Create a `requirements.txt` file with the following content:
+```txt
+pandas>=1.3.0
+numpy>=1.21.0
+supabase>=1.0.0
+python-dotenv>=0.19.0
+```
+
+Then install the dependencies:
+```bash
+pip install -r requirements.txt
+```
+
+### 4. Alternative: Install Dependencies Directly
+If you prefer to install without a requirements file:
+```bash
+pip install pandas numpy supabase python-dotenv
+```
+
+### 5. Verify Installation
+Run this command to verify all packages are installed correctly:
+```bash
+python -c "import pandas, numpy, supabase, dotenv; print('All packages installed successfully!')"
+```
+
+Expected output:
+```
+All packages installed successfully!
+```
+
+### 6. Project Files Overview
+
+After installation, your project directory should contain these files:
+```
+rossmann-star-schema/
+│
+├── etl_pipeline.py          # Main ETL script (you need to create this)
+├── supabase_schema.sql       # Database schema (you need to create this)
+├── requirements.txt          # Python dependencies
+├── .env                      # Environment variables (create this)
+├── .env.example              # Template for environment variables
+├── .gitignore                # Git ignore rules
+└── README.md                 # This file
+```
+
+### 7. Common Installation Issues and Solutions
+
+| Issue | Solution |
+|-------|----------|
+| `pip: command not found` | Install pip: `python -m ensurepip --upgrade` |
+| Permission denied | Use `pip install --user` or create virtual environment |
+| SSL certificate errors | Upgrade pip: `pip install --upgrade pip` |
+| `supabase` not found | Try: `pip install supabase-py` |
+
+### 8. Docker Installation (Alternative)
+
+If you prefer using Docker, create a `Dockerfile`:
+```dockerfile
+FROM python:3.9-slim
+
+WORKDIR /app
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+
+CMD ["python", "etl_pipeline.py"]
+```
+
+Build and run with Docker:
+```bash
+docker build -t rossmann-etl .
+docker run --env-file .env rossmann-etl
+```
+
 # 5. Update CSV path in etl_pipeline.py
 #    - Change data_path to your CSV location
 
